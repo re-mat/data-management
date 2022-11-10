@@ -6,7 +6,7 @@ import {isAddedToCurrentFilters} from "./utils";
 const SearchByCharacterization = () => {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(9999)
-  const [name, setName] = useState("Shape")
+  const [name, setName] = useState("Number of Layers")
   const [shape, setShape] = useState(shapeOptions[0])
   const [numLayers, setNumLayers] = useState(1)
   const {toolState, toolDispatch} = useContext(GlobalContext)
@@ -61,7 +61,7 @@ const SearchByCharacterization = () => {
             id="characterization-option"
             onChange={e => setName(e.target.value)}
           >
-            <option>Shape</option>
+            {/* <option>Shape</option> */}
             <option>Average Thickness of Growth (um²)</option>
             <option>Std. Dev. of Growth (mm)</option>
             <option>Number of Layers</option>
@@ -76,7 +76,7 @@ const SearchByCharacterization = () => {
         </div>
       </div>
       <div className='flex flex-row md:w-2/3 justify-center my-2'>
-        {name === 'Shape' &&
+        {/* {name === 'Shape' &&
           <div className="w-full px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                    htmlFor="shape-option">
@@ -97,7 +97,7 @@ const SearchByCharacterization = () => {
               </div>
             </div>
           </div>
-        }
+        } */}
         {name === 'Number of Layers' &&
           <div className="w-full px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

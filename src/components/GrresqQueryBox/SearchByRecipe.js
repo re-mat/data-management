@@ -74,7 +74,7 @@ const SearchByRecipe = () => {
           <div className="w-full px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                    htmlFor="carbon-source-option">
-              Catalyst
+              Carbon Source
             </label>
             <div className="relative">
               <select
