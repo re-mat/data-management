@@ -62,7 +62,12 @@ const ToolSubmit = () => {
 
     const stringifiedExperimentData = JSON.stringify(experimentData)
     formData.append('experimentData', stringifiedExperimentData)
-    axios.post(host + '/experiments/submit', formData)
+    axios.post(host + '/experiments/submit', formData).then(function (response) {
+      alert(response.data);
+    })
+    .catch(function (error) {
+      alert(error);
+    });
   }
   const environmentConditionsForm =
     submissionState.useCustomEnvironmentConditions
@@ -242,7 +247,7 @@ const ToolSubmit = () => {
             value={submissionState.furnaceNumber}
           >
             {toolState.furnaces.map((furnace) => {
-              return <option key={furnace.id}>{furnace.id}</option>
+              return <option key={furnace.id}>Furnace {furnace.id}</option>
             })}
           </select>
           <div
@@ -1134,12 +1139,6 @@ const ToolSubmit = () => {
       <div className="md:w-3/4 md:flex md:flex-col md:items-center md:justify-center mb-6 mx-auto">
         {authorsForm}
       </div>
-      <hr className='mb-5'/>
-      <button
-        className="w-1/12 self-center bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-        onClick={onSubmitExperiment}>
-        Submit
-      </button>
 
       <hr className='mb-5'/>
       <div className="flex justify-center">
@@ -1167,6 +1166,14 @@ const ToolSubmit = () => {
                  multiple/>
         </div>
       </div>
+
+      <hr className='mb-5'/>
+      <button
+        className="w-1/12 self-center bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+        onClick={onSubmitExperiment}>
+        Submit
+      </button>
+      
     </>
   )
 }

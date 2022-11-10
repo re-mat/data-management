@@ -13,6 +13,17 @@ const QueryResultTableRows = () => {
         const substrateId = experiment.substrate ? experiment.substrate.id : 'N/A'
         const numLayers = experiment.properties ? experiment.properties.number_of_layers.value : 'N/A'
         const coverage = experiment.properties ? experiment.properties.growth_coverage.value : 'N/A'
+        // to display all authors
+        // var res = 'N/A'
+        // if(experiment.authors){
+        // res = ''
+        // for(var i=0; i<experiment.authors.length;i++){
+        //   if(i!=0)
+        //     res += ' , '
+        //   res += experiment.authors[i].first_name+ ' ' + experiment.authors[i].last_name
+        // } 
+        // }
+        // const author = res
         const author = experiment.authors.length > 0 ? experiment.authors[0].first_name + ' ' + experiment.authors[0].last_name : 'N/A'
         const carbonSource = experiment.recipe ? experiment.recipe.carbon_source.value : 'N/A'
         return (
@@ -34,9 +45,9 @@ const QueryResultTableRows = () => {
             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
               {coverage}
             </td>
-            <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+            {/* <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
               ????
-            </td>
+            </td> */}
             <td className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
               {author}
             </td>
@@ -87,6 +98,21 @@ const QueryResultTableRows = () => {
                     value = experiment.properties ? experiment.properties.growth_coverage.value : 'N/A'
                   else if (filterName.includes('domain size'))
                     value = experiment.properties ? experiment.properties.domain_size.value : 'N/A'
+                  else if (filterName.includes('base pressure'))
+                    value = experiment.recipe ? experiment.recipe.base_pressure.value : 'N/A'
+                  else if (filterName.includes('maximum temperature'))
+                    value = experiment.recipe ? experiment.recipe.maximum_temperature.value : 'N/A' 
+                  else if (filterName.includes('maximum pressure'))
+                    value = experiment.recipe ? experiment.recipe.maximum_pressure.value : 'N/A'
+                  else if (filterName.includes('max flow rate'))
+                    value = experiment.recipe ? experiment.recipe.max_flow_rate.value : 'N/A'
+                  else if (filterName.includes('inert gas'))
+                    value = filter.value
+                    // experiment.recipe ? (experiment.recipe.uses_helium? "Helium ":"") + (experiment.recipe.uses_argon? "Argon ":"") : 'N/A' 
+                  else if (filterName.includes('growth duration'))
+                    value = experiment.recipe ? experiment.recipe.growth_duration.value : 'N/A'
+                  else if (filterName.includes('carbon source flow rate'))
+                    value = experiment.recipe ? experiment.recipe.carbon_source_flow_rate.value : 'N/A'
                   return (
                     <td key={filter.name}
                         className="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">

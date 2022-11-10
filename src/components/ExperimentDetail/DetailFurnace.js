@@ -29,7 +29,7 @@ const DetailFurnace = () => {
 
   const displayLengthOfHeatedRegion =
     lengthOfHeatedRegion
-      ? <span className='md:w-1/2'>{lengthOfHeatedRegion} TODO:UNIT?</span>
+      ? <span className='md:w-1/2'>{lengthOfHeatedRegion} mm</span> //TODO:UNIT?
       : <span className='md:w-1/2'>-</span>
 
   return (
