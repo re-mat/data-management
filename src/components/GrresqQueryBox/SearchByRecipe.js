@@ -7,9 +7,9 @@ const SearchByRecipe = () => {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(9999)
   const [name, setName] = useState("Carbon Source")
-  const [carbonSource, setCarbonSource] = useState(carbonSourceOptions[0])
   const [inertGas, setInertGas] = useState(inertGasOptions[0])
   const {toolState, toolDispatch} = useContext(GlobalContext)
+  const [carbonSource, setCarbonSource] = useState(toolState.carbonSource[0])
 
   const onClickAdd = () => {
     if (isAddedToCurrentFilters(name, toolState.filters)) {
@@ -82,7 +82,7 @@ const SearchByRecipe = () => {
                 id="carbon-source-option"
                 onChange={e => setCarbonSource(e.target.value)}
               >
-                {carbonSourceOptions.map(cat => <option key={cat}>{cat}</option>)}
+                {toolState.carbonSource.map(cat => <option key={cat}>{cat}</option>)}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

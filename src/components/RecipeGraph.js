@@ -22,6 +22,10 @@ const RecipeGraph = () => {
           scales: {
             x: {
               type: 'linear',
+              beginAtZero: false
+            },
+            y: {
+              beginAtZero: false
             }
           }
         }}

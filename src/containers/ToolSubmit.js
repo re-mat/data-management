@@ -277,7 +277,7 @@ const ToolSubmit = () => {
               value={submissionState.catalyst}
               onChange={e => submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value})}
             >
-              {catalystOptions.map((catalyst) => {
+              {toolState.catalysts.map((catalyst) => {
                 return <option key={catalyst}>{catalyst}</option>
               })}
             </select>
@@ -753,7 +753,7 @@ const ToolSubmit = () => {
               onChange={e => submissionDispatch({type: 'CARBON_SOURCE_CHANGE', payload: e.target.value})}
               value={submissionState.carbonSource}
             >
-              {carbonSourceOptions.map((carbonSource) => {
+              {toolState.carbonSource.map((carbonSource) => {
                 return <option key={carbonSource}>{carbonSource}</option>
               })}
             </select>

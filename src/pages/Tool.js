@@ -13,7 +13,7 @@ import SearchByFurnace from "../components/GrresqQueryBox/SearchByFurnace";
 import SearchBySubstrate from "../components/GrresqQueryBox/SearchBySubstrate";
 import SearchByCharacterization from "../components/GrresqQueryBox/SearchByCharacterization";
 import SearchByAuthor from "../components/GrresqQueryBox/SearchByAuthor";
-import SearchByRecipe from "../components/GrresqQueryBox/SearchByRecipe"; //me
+import SearchByRecipe from "../components/GrresqQueryBox/SearchByRecipe"; 
 import QueryResultTable from "../containers/QueryResultTable";
 
 const Tool = () => {
