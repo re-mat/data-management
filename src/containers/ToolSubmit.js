@@ -1031,6 +1031,8 @@ const ToolSubmit = () => {
     <>
       <h2 className='text-center text-4xl font-bold mb-4'>Submit New Experiment Data</h2>
       <hr className='mb-5'/>
+      <div className='w-full md:flex flex-row mt-5 '>
+      <div className='md:w-1/2 flex flex-col border p-3'>
       <div className='md:w-3/4 md:flex md:mx-auto md:justify-center items-center mb-5'>
         <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                htmlFor="form-material-name">
@@ -1103,20 +1105,7 @@ const ToolSubmit = () => {
       <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
         {substrateForm}
       </div>
-      <hr className='mb-5'/>
-      <h4 className='text-center text-3xl font-bold mb-4'>Recipe</h4>
-      <div className="md:flex md:items-center md:justify-center mb-6">
-        <label className="block text-gray-500 font-bold">
-          <input className="mr-2 leading-tight" type="checkbox"
-                 onChange={e => submissionDispatch({type: 'SET_CUSTOM_RECIPE', payload: e.target.checked})}/>
-          <span className="text-sm">
-              I will upload a new Recipe
-            </span>
-        </label>
-      </div>
-      <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
-        {recipeForm}
-      </div>
+      
       <hr className='mb-5'/>
       <h4 className='text-center text-3xl font-bold mb-4'>Properties</h4>
       <div className="md:flex md:items-center md:justify-center mb-6">
@@ -1133,6 +1122,23 @@ const ToolSubmit = () => {
       </div>
       <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
         {propertiesForm}
+      </div>
+
+      </div>
+      <div className='md:w-1/2 flex flex-col border p-3'>
+
+      <h4 className='text-center text-3xl font-bold mb-4'>Recipe</h4>
+      <div className="md:flex md:items-center md:justify-center mb-6">
+        <label className="block text-gray-500 font-bold">
+          <input className="mr-2 leading-tight" type="checkbox"
+                 onChange={e => submissionDispatch({type: 'SET_CUSTOM_RECIPE', payload: e.target.checked})}/>
+          <span className="text-sm">
+              I will upload a new Recipe
+            </span>
+        </label>
+      </div>
+      <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
+        {recipeForm}
       </div>
       <hr className='mb-5'/>
       <h4 className='text-center text-3xl font-bold mb-4'>Authors</h4>
@@ -1165,6 +1171,36 @@ const ToolSubmit = () => {
                  onChange={e => submissionDispatch({type: 'UPLOAD_SEM_FILES', payload: e.target.files})}
                  multiple/>
         </div>
+      </div>
+
+      <hr className='mb-5'/>
+      <div className="flex justify-center">
+        <div className="mb-3 w-96">
+          <label htmlFor="raman-files" className="form-label inline-block mb-2 text-gray-700">
+            RAMAN File(s)
+          </label>
+          <input className="form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                 type="file" id="raman-files"
+                 onChange={e => submissionDispatch({type: 'UPLOAD_RAMAN_FILES', payload: e.target.files})}
+                 multiple/>
+        </div>
+      </div>
+
+      </div>
       </div>
 
       <hr className='mb-5'/>
