@@ -9,4 +9,4 @@ export const materialNameOptions = ['Graphene']
 export const firstnames = []
 export const lastnames = []
 export const institutions = []
-export const defaultPrecision = 0.0001
+export const defaultPrecision = 0.01
