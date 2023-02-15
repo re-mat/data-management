@@ -13,6 +13,7 @@ import SearchByFurnace from "../components/GrresqQueryBox/SearchByFurnace";
 import SearchBySubstrate from "../components/GrresqQueryBox/SearchBySubstrate";
 import SearchByCharacterization from "../components/GrresqQueryBox/SearchByCharacterization";
 import SearchByAuthor from "../components/GrresqQueryBox/SearchByAuthor";
+import SearchByRecipe from "../components/GrresqQueryBox/SearchByRecipe"; 
 import QueryResultTable from "../containers/QueryResultTable";
 
 const Tool = () => {
@@ -209,7 +210,7 @@ const Tool = () => {
                 <button
                   className='w-9 h-9 self-center text-center bg-gray-400 hover:bg-blue-700 text-white text-3xl font-bold rounded focus:outline-none focus:shadow-outline'
                   type='button' id='recipe-btn'
-                  onClick={() => alert('temporarily disabled (under maintenance)')/*setShowRecipes(!showRecipes)*/}
+                  onClick={() => setShowRecipes(!showRecipes) /* alert('temporarily disabled (under maintenance)'*/}
                 >
                   +
                 </button>
@@ -218,9 +219,10 @@ const Tool = () => {
                 Parameters describing the annealing, growing and cooling steps
               </div>}
               {showRecipes || <hr/>}
-              {showRecipes && <Recipes
+              {showRecipes && <SearchByRecipe/>}
+              {/* {showRecipes && <Recipes
                 recipes={toolState.recipes}
-              />}
+              />} */}
             </section>
             <section className='w-full flex flex-col mb-5'>
               <div className='flex justify-center align-middle mb-4'>

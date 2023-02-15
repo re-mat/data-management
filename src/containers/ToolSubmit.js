@@ -62,7 +62,12 @@ const ToolSubmit = () => {
 
     const stringifiedExperimentData = JSON.stringify(experimentData)
     formData.append('experimentData', stringifiedExperimentData)
-    axios.post(host + '/experiments/submit', formData)
+    axios.post(host + '/experiments/submit', formData).then(function (response) {
+      alert(response.data);
+    })
+    .catch(function (error) {
+      alert(error);
+    });
   }
   const environmentConditionsForm =
     submissionState.useCustomEnvironmentConditions
@@ -242,7 +247,7 @@ const ToolSubmit = () => {
             value={submissionState.furnaceNumber}
           >
             {toolState.furnaces.map((furnace) => {
-              return <option key={furnace.id}>{furnace.id}</option>
+              return <option key={furnace.id}>Furnace {furnace.id}</option>
             })}
           </select>
           <div
@@ -270,14 +275,29 @@ const ToolSubmit = () => {
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="form-catalyst"
               value={submissionState.catalyst}
-              onChange={e => submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value})}
+              onChange={e => {if(e.target.value=="Other") document.getElementById("form-catalyst-box").disabled=false;submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value});}}
             >
-              {catalystOptions.map((catalyst) => {
+              {toolState.catalysts.map((catalyst) => {
                 return <option key={catalyst}>{catalyst}</option>
               })}
+              <option key="Other">Other</option>
             </select>
           </div>
         </div>
+
+        <div className="md:w-2/3">
+              <input
+              disabled="disabled"
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+              id="form-catalyst-box" type="text" value={submissionState.catalyst} placeholder="Enter Other Catalyst"
+              onChange={e => submissionDispatch({
+                type: 'CATALYST_CHANGE',
+                payload: e.target.value
+              })}
+              />
+        </div>
+        <br></br>
+
         <div className="md:w-3/4 md:flex md:items-center mb-6">
           <div className="md:w-1/2">
             <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -748,7 +768,7 @@ const ToolSubmit = () => {
               onChange={e => submissionDispatch({type: 'CARBON_SOURCE_CHANGE', payload: e.target.value})}
               value={submissionState.carbonSource}
             >
-              {carbonSourceOptions.map((carbonSource) => {
+              {toolState.carbonSource.map((carbonSource) => {
                 return <option key={carbonSource}>{carbonSource}</option>
               })}
             </select>
@@ -1026,6 +1046,8 @@ const ToolSubmit = () => {
     <>
       <h2 className='text-center text-4xl font-bold mb-4'>Submit New Experiment Data</h2>
       <hr className='mb-5'/>
+      <div className='w-full md:flex flex-row mt-5 '>
+      <div className='md:w-1/2 flex flex-col border p-3'>
       <div className='md:w-3/4 md:flex md:mx-auto md:justify-center items-center mb-5'>
         <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
                htmlFor="form-material-name">
@@ -1098,20 +1120,7 @@ const ToolSubmit = () => {
       <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
         {substrateForm}
       </div>
-      <hr className='mb-5'/>
-      <h4 className='text-center text-3xl font-bold mb-4'>Recipe</h4>
-      <div className="md:flex md:items-center md:justify-center mb-6">
-        <label className="block text-gray-500 font-bold">
-          <input className="mr-2 leading-tight" type="checkbox"
-                 onChange={e => submissionDispatch({type: 'SET_CUSTOM_RECIPE', payload: e.target.checked})}/>
-          <span className="text-sm">
-              I will upload a new Recipe
-            </span>
-        </label>
-      </div>
-      <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
-        {recipeForm}
-      </div>
+      
       <hr className='mb-5'/>
       <h4 className='text-center text-3xl font-bold mb-4'>Properties</h4>
       <div className="md:flex md:items-center md:justify-center mb-6">
@@ -1129,17 +1138,28 @@ const ToolSubmit = () => {
       <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
         {propertiesForm}
       </div>
+
+      </div>
+      <div className='md:w-1/2 flex flex-col border p-3'>
+
+      <h4 className='text-center text-3xl font-bold mb-4'>Recipe</h4>
+      <div className="md:flex md:items-center md:justify-center mb-6">
+        <label className="block text-gray-500 font-bold">
+          <input className="mr-2 leading-tight" type="checkbox"
+                 onChange={e => submissionDispatch({type: 'SET_CUSTOM_RECIPE', payload: e.target.checked})}/>
+          <span className="text-sm">
+              I will upload a new Recipe
+            </span>
+        </label>
+      </div>
+      <div className="md:w-3/4 md:flex md:items-center md:justify-center mb-6 mx-auto">
+        {recipeForm}
+      </div>
       <hr className='mb-5'/>
       <h4 className='text-center text-3xl font-bold mb-4'>Authors</h4>
       <div className="md:w-3/4 md:flex md:flex-col md:items-center md:justify-center mb-6 mx-auto">
         {authorsForm}
       </div>
-      <hr className='mb-5'/>
-      <button
-        className="w-1/12 self-center bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-        onClick={onSubmitExperiment}>
-        Submit
-      </button>
 
       <hr className='mb-5'/>
       <div className="flex justify-center">
@@ -1167,6 +1187,44 @@ const ToolSubmit = () => {
                  multiple/>
         </div>
       </div>
+
+      <hr className='mb-5'/>
+      <div className="flex justify-center">
+        <div className="mb-3 w-96">
+          <label htmlFor="raman-files" className="form-label inline-block mb-2 text-gray-700">
+            RAMAN File(s)
+          </label>
+          <input className="form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                 type="file" id="raman-files"
+                 onChange={e => submissionDispatch({type: 'UPLOAD_RAMAN_FILES', payload: e.target.files})}
+                 multiple/>
+        </div>
+      </div>
+
+      </div>
+      </div>
+
+      <hr className='mb-5'/>
+      <button
+        className="w-1/12 self-center bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+        onClick={onSubmitExperiment}>
+        Submit
+      </button>
+      
     </>
   )
 }

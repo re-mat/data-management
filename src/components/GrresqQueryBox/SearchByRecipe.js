@@ -1,14 +1,15 @@
 import React, {useContext, useState} from "react";
 import {GlobalContext} from "../../pages/App";
-import {carbonSourceOptions, defaultPrecision} from "../../settings";
+import {carbonSourceOptions, inertGasOptions, defaultPrecision} from "../../settings";
 import {isAddedToCurrentFilters} from "./utils";
 
 const SearchByRecipe = () => {
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(9999)
   const [name, setName] = useState("Carbon Source")
-  const [carbonSource, setCarbonSource] = useState(carbonSourceOptions[0])
+  const [inertGas, setInertGas] = useState(inertGasOptions[0])
   const {toolState, toolDispatch} = useContext(GlobalContext)
+  const [carbonSource, setCarbonSource] = useState(toolState.carbonSource[0])
 
   const onClickAdd = () => {
     if (isAddedToCurrentFilters(name, toolState.filters)) {
@@ -20,6 +21,13 @@ const SearchByRecipe = () => {
         type: 'ADD_FILTER',
         payload: {
           type: 'KEY_VALUE', category: 'recipe', name, value: carbonSource
+        }
+      })
+    } else if (name === 'Inert Gas') {
+      toolDispatch({
+        type: 'ADD_FILTER',
+        payload: {
+          type: 'KEY_VALUE', category: 'recipe', name, value: inertGas
         }
       })
     } else {
@@ -47,9 +55,12 @@ const SearchByRecipe = () => {
           >
             <option>Carbon Source</option>
             <option>Base Pressure (Torr)</option>
-            <option>Diameter (mm)</option>
-            <option>Length (mm)</option>
-            <option>Surface Area (mm²)</option>
+            <option>Maximum Temperature (°C)</option>
+            <option>Maximum Pressure (Torr)</option>
+            <option>Max Flow Rate (sccm)</option>
+            <option>Inert Gas </option>
+            <option>Growth Duration (min)</option>
+            <option>Carbon Source Flow Rate (sccm)</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
             <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -63,7 +74,7 @@ const SearchByRecipe = () => {
           <div className="w-full px-3 mb-6 md:mb-0">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                    htmlFor="carbon-source-option">
-              Catalyst
+              Carbon Source
             </label>
             <div className="relative">
               <select
@@ -71,7 +82,7 @@ const SearchByRecipe = () => {
                 id="carbon-source-option"
                 onChange={e => setCarbonSource(e.target.value)}
               >
-                {carbonSourceOptions.map(cat => <option key={cat}>{cat}</option>)}
+                {toolState.carbonSource.map(cat => <option key={cat}>{cat}</option>)}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -81,7 +92,29 @@ const SearchByRecipe = () => {
             </div>
           </div>
         }
-        {name !== 'Carbon Source' &&
+        {name === 'Inert Gas' &&
+          <div className="w-full px-3 mb-6 md:mb-0">
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                   htmlFor="inert-gas-option">
+              Uses
+            </label>
+            <div className="relative">
+              <select
+                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="inert-gas-option"
+                onChange={e => setInertGas(e.target.value)}
+              >
+                {inertGasOptions.map(ig => <option key={ig}>{ig}</option>)}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        }
+        {name !== 'Carbon Source' && name !== 'Inert Gas' &&
           <>
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

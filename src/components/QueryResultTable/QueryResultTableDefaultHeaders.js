@@ -23,10 +23,10 @@ const QueryResultTableDefaultHeaders = () => {
           className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
         Growth Coverage (%)
       </th>
-      <th scope="col"
+      {/* <th scope="col"
           className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
         Quality
-      </th>
+      </th> */}
       <th scope="col"
           className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
         Author

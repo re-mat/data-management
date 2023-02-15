@@ -23,13 +23,13 @@ const experimentReducer = (state, action) => {
       const graphData = {
         argonFlowRates: [],
         carbonSourceFlowRates: [],
-        coolingRates: [],
+        // coolingRates: [],
         durations: [],
         furnacePressures: [],
         furnaceTemperatures: [],
         heliumFlowRates: [],
         hydrogenFlowRates: [],
-        sampleLocations: [],
+        // sampleLocations: [],
       }
       let elapsedTime = 0
       let growingEndTime = 0
@@ -39,16 +39,26 @@ const experimentReducer = (state, action) => {
       let currStep = 'Annealing'
 
       if (recipe.preparation_steps) {
+        // initializing values at time=0
+        times.push(0)
+        const prepStep = recipe.preparation_steps[0]
+        graphData.argonFlowRates.push(prepStep.argon_flow_rate.value ? prepStep.argon_flow_rate.value : 0)
+        graphData.carbonSourceFlowRates.push(prepStep.carbon_source_flow_rate.value ? prepStep.carbon_source_flow_rate.value : 0)
+        graphData.furnacePressures.push(prepStep.furnace_pressure.value ? prepStep.furnace_pressure.value : (recipe.base_pressure.value?recipe.base_pressure.value:760))
+        graphData.furnaceTemperatures.push(25) //room_temperature
+        graphData.heliumFlowRates.push(prepStep.helium_flow_rate.value ? prepStep.helium_flow_rate.value : 0)
+        graphData.hydrogenFlowRates.push(prepStep.hydrogen_flow_rate.value ? prepStep.hydrogen_flow_rate.value : 0)
+
         for (const prepStep of recipe.preparation_steps) {
           const argonFlowRate = prepStep.argon_flow_rate.value ? prepStep.argon_flow_rate.value : 0
           const carbonSourceFlowRate = prepStep.carbon_source_flow_rate.value ? prepStep.carbon_source_flow_rate.value : 0
-          const coolingRate = prepStep.cooling_rate.value ? prepStep.cooling_rate.value : 0
+          // const coolingRate = prepStep.cooling_rate.value ? prepStep.cooling_rate.value : 0
           const duration = prepStep.duration.value ? prepStep.duration.value : 0
           const furnacePressure = prepStep.furnace_pressure.value ? prepStep.furnace_pressure.value : 0
           const furnaceTemperature = prepStep.furnace_temperature.value ? prepStep.furnace_temperature.value : 0
           const heliumFlowRate = prepStep.helium_flow_rate.value ? prepStep.helium_flow_rate.value : 0
           const hydrogenFlowRate = prepStep.hydrogen_flow_rate.value ? prepStep.hydrogen_flow_rate.value : 0
-          const sampleLocation = prepStep.sample_location.value ? prepStep.sample_location.value : 0
+          // const sampleLocation = prepStep.sample_location.value ? prepStep.sample_location.value : 0
           if (currStep !== prepStep.name.value) {
             if (currStep === 'Annealing') {
               annealingEndTime = elapsedTime
@@ -61,12 +71,12 @@ const experimentReducer = (state, action) => {
           times.push(elapsedTime)
           graphData.argonFlowRates.push(argonFlowRate)
           graphData.carbonSourceFlowRates.push(carbonSourceFlowRate)
-          graphData.coolingRates.push(coolingRate)
+          // graphData.coolingRates.push(coolingRate)
           graphData.furnacePressures.push(furnacePressure)
           graphData.furnaceTemperatures.push(furnaceTemperature)
           graphData.heliumFlowRates.push(heliumFlowRate)
           graphData.hydrogenFlowRates.push(hydrogenFlowRate)
-          graphData.sampleLocations.push(sampleLocation)
+          // graphData.sampleLocations.push(sampleLocation)
         }
       }
       coolingEndTime = elapsedTime
@@ -98,13 +108,13 @@ const experimentReducer = (state, action) => {
                 borderColor: 'rgb(171, 71, 188)',
                 hidden: true,
               }, {
-                label: 'Cooling Rate (sccm)',
-                data: graphData.coolingRates,
-                backgroundColor: 'rgb(49, 27, 146)',
-                borderColor: 'rgb(49, 27, 146)',
-                hidden: true,
-              }, {
-                label: 'Furnace Temperature (C)',
+              //   label: 'Cooling Rate (°C/min)',
+              //   data: graphData.coolingRates,
+              //   backgroundColor: 'rgb(49, 27, 146)',
+              //   borderColor: 'rgb(49, 27, 146)',
+              //   hidden: true,
+              // }, {
+                label: 'Furnace Temperature (°C)',
                 data: graphData.furnaceTemperatures,
                 backgroundColor: 'rgb(121, 134, 203)',
                 borderColor: 'rgb(121, 134, 203)',
@@ -120,13 +130,14 @@ const experimentReducer = (state, action) => {
                 backgroundColor: 'rgb(0, 176, 255)',
                 borderColor: 'rgb(0, 176, 255)',
                 hidden: true,
-              }, {
-                label: 'Sample Location (mm)',
-                data: graphData.sampleLocations,
-                backgroundColor: 'rgb(0, 131, 143)',
-                borderColor: 'rgb(0, 131, 143)',
-                hidden: true,
               }
+              // }, {
+              //   label: 'Sample Location (mm)',
+              //   data: graphData.sampleLocations,
+              //   backgroundColor: 'rgb(0, 131, 143)',
+              //   borderColor: 'rgb(0, 131, 143)',
+              //   hidden: true,
+              // }
             ]
           }
         }

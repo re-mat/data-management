@@ -8,6 +8,7 @@ import {signInWithToken} from "../utils/auth";
 import Signin from "./Signin";
 import Signup from "./Signup";
 import Home from "./Home";
+import Profile from "./Profile";
 import Navbar from "../components/Navbar";
 import Tool from "./Tool";
 import ExperimentView from "./ExperimentView";
@@ -77,13 +78,16 @@ const App = () => {
         {errorMsg}
         <Switch>
           <Route exact path='/'>
-            <Home/>
+            <Tool/>
           </Route>
           <Route exact path='/tool'>
             <Tool/>
           </Route>
           <Route path='/tool/experiments'>
             <ExperimentView/>
+          </Route>
+          <Route path='/profile'>
+            <Profile/>
           </Route>
           <Route path='/signin'>
             <Signin/>

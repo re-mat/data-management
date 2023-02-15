@@ -6,7 +6,8 @@ export const toolDefaultState = {
   recipes: [],
   substrates: [],
   authors: [],
-
+  catalyst: [],
+  carbonSource: [],
   filters: [],
   savedFilters: [],
   queryResults: [],
@@ -25,6 +26,8 @@ const toolReducer = (state, action) => {
         recipes: data.recipes,
         substrates: data.substrates,
         authors: data.authors,
+        catalysts: data.catalyst,
+        carbonSource: data.carbon_source
       }
     }
     case 'ADD_FILTER' : {
