@@ -3,8 +3,6 @@ import {GlobalContext} from "../pages/App";
 import {
   defaultPrecision,
   materialNameOptions,
-  catalystOptions,
-  carbonSourceOptions,
   prepNameOptions,
   shapeOptions,
   host
@@ -24,7 +22,7 @@ const ToolSubmit = () => {
         return
       }
     }
-  }, [])
+  })
 
   const addAuthor = () => {
     for (const author of submissionState.authors) {
@@ -274,15 +272,17 @@ const ToolSubmit = () => {
             <select
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="form-catalyst"
+              onChange={e => {if(e.target.value==="Other");submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value});}}
               value={submissionState.catalyst}
-              onChange={e => {if(e.target.value=="Other") document.getElementById("form-catalyst-box").disabled=false;submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value});}}
             >
-              {toolState.catalysts.map((catalyst) => {
+              {toolState.catalysts?.map((catalyst) => {
                 return <option key={catalyst}>{catalyst}</option>
               })}
               <option key="Other">Other</option>
             </select>
+            
           </div>
+          
         </div>
 
         <div className="md:w-2/3">

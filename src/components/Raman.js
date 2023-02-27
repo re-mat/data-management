@@ -1,12 +1,4 @@
 import React, {useContext} from "react";
-import {
-  Chart as ChartJS,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
 import {Scatter} from 'react-chartjs-2';
 import {ExperimentContext} from "../pages/ExperimentView";
 import {getRandomInt} from "../utils/math";

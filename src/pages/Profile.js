@@ -20,7 +20,7 @@ const Profile = () => {
       }
     }
     init(id)
-  }, [])
+  })
  
   return (
     <div className='md:w-1/2 flex flex-col md:items-center mx-auto border rounded my-6 py-6'>

@@ -7,7 +7,7 @@ import './App.css';
 import {signInWithToken} from "../utils/auth";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import Home from "./Home";
+// import Home from "./Home";
 import Profile from "./Profile";
 import Navbar from "../components/Navbar";
 import Tool from "./Tool";
