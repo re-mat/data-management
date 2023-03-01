@@ -9,7 +9,7 @@ on:
       - "tool-ci-job"
 
 jobs:
-  build-matrix:
+  build-test-matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,18 +23,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: npm install
-
-  test:
-    needs: build-matrix
-    runs-on: ubuntu-latest
-    steps:
     - name: Run EsLint 
       run: npx eslint src/
     - name: Build
       run: npm run build
 
   publish:
-    needs: [build-matrix, test]
+    needs: [build-matrix]
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
