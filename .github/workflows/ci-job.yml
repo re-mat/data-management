@@ -21,20 +21,20 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install
 
   test:
     needs: build-matrix
     runs-on: ubuntu-latest
     steps:
-    - name: Install dependencies
-      run: npm install
     - name: Run EsLint 
       run: npx eslint src/
     - name: Build
       run: npm run build
 
   publish:
-    needs: build-matrix
+    needs: [build-matrix, test]
     runs-on: ubuntu-latest
     steps:
       - name: Extract branch name
