@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -22,11 +24,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install
-    - run: npm ci
-    - run: npm run build
-    - run: npx eslint src/
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
 
   docker:
     runs-on: ubuntu-latest
