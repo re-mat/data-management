@@ -1,20 +1,20 @@
-import React, {useState, useEffect, useReducer} from "react";
+import React, {useState, useReducer} from 'react'
 import {
   BrowserRouter as Router, Switch, Route
-} from "react-router-dom";
-import './App.css';
+} from 'react-router-dom'
+import './App.css'
 
-import {signInWithToken} from "../utils/auth";
-import Signin from "./Signin";
-import Signup from "./Signup";
+// import {signInWithToken} from "../utils/auth";
+import Signin from './Signin'
+import Signup from './Signup'
 // import Home from "./Home";
-import Profile from "./Profile";
-import Navbar from "../components/Navbar";
-import Tool from "./Tool";
-import ExperimentView from "./ExperimentView";
-import toolReducer, {toolDefaultState} from "../reducers/toolReducer";
-import userReducer, {userDefaultState} from "../reducers/userReducer";
-export const GlobalContext = React.createContext();
+import Profile from './Profile'
+import Navbar from '../components/Navbar'
+import Tool from './Tool'
+import ExperimentView from './ExperimentView'
+import toolReducer, {toolDefaultState} from '../reducers/toolReducer'
+import userReducer, {userDefaultState} from '../reducers/userReducer'
+export const GlobalContext = React.createContext()
 
 const App = () => {
   const [toolState, toolDispatch] = useReducer(toolReducer, toolDefaultState)
@@ -44,29 +44,30 @@ const App = () => {
       setErrorMsg(null)
     }, 5000)
   }
-  useEffect(() => {
-      const trySignIn = async () => {
-        const token = window.localStorage.getItem('token');
-        if (token) {
-          try {
-            const response = await signInWithToken(token);
-            window.localStorage.setItem('token', response.token)
-            const payload = {
-              authorId: response.author_id
-            }
-            userDispatch({type: 'SIGN_IN', payload})
-          } catch (e) {
-            if (e.response && e.response.status === 401)
-              alert('Email or password is incorrect.')
-            window.localStorage.removeItem('token')
-          }
-        } else {
-          userDispatch({type: 'SIGN_OUT'})
-        }
-      }
-      trySignIn();
-    }, []
-  )
+  // useEffect(() => {
+  //     const trySignIn = async () => {
+  //       const token = 'abcdeg'
+  //       if (token) {
+  //         try {
+  //           const response = await signInWithToken(token);
+  //           // window.localStorage.setItem('token', response.token)
+  //           console.log(response)
+  //           const payload = {
+  //             authorId: response.id
+  //           }
+  //           userDispatch({type: 'SIGN_IN', payload})
+  //         } catch (e) {
+  //           if (e.response && e.response.status === 401)
+  //             alert('Email or password is incorrect.')
+  //           window.localStorage.removeItem('token')
+  //         }
+  //       } else {
+  //         userDispatch({type: 'SIGN_OUT'})
+  //       }
+  //     }
+  //     trySignIn();
+  //   }, []
+  // )
 
   return (
     <GlobalContext.Provider
@@ -99,7 +100,7 @@ const App = () => {
         <div className='h-96'/>
       </Router>
     </GlobalContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App

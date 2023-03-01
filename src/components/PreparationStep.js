@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PreparationStep = ({ idx, id, step, name, duration, furnaceTemperature, furnacePressure, sampleLocation, heliumFlowRate, hydrogenFlowRate, carbonSourceFlowRate, argonFlowRate, coolingRate }) => {
+const PreparationStep = ({ id, step, name, duration, furnaceTemperature, furnacePressure, sampleLocation, heliumFlowRate, hydrogenFlowRate, carbonSourceFlowRate, argonFlowRate, coolingRate }) => {
   const displayStep =
     step !== null
       ? <span className='md:w-1/2'>{step + 1}</span>

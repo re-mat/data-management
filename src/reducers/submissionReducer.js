@@ -1,4 +1,4 @@
-import {carbonSourceOptions, catalystOptions, prepNameOptions, shapeOptions, materialNameOptions} from "../settings";
+import {carbonSourceOptions, catalystOptions, prepNameOptions, shapeOptions, materialNameOptions} from '../settings'
 
 export const submissionDefaultState = {
   materialName: materialNameOptions[0],
@@ -50,7 +50,6 @@ export const submissionDefaultState = {
 const submissionReducer = (state, action) => {
   switch (action.type) {
     case 'INIT_SUBMISSION': {
-      console.log(action.payload)
       return {
         ...state,
         authors: [...state.authors, action.payload]

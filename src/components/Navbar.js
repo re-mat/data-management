@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
-import {GlobalContext} from "../pages/App";
+import {GlobalContext} from '../pages/App'
 
 const Navbar = () => {
   const {flashSuccess, userState, userDispatch} = useContext(GlobalContext)

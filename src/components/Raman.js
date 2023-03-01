@@ -1,7 +1,7 @@
-import React, {useContext} from "react";
-import {Scatter} from 'react-chartjs-2';
-import {ExperimentContext} from "../pages/ExperimentView";
-import {getRandomInt} from "../utils/math";
+import React, {useContext} from 'react'
+import {Scatter} from 'react-chartjs-2'
+import {ExperimentContext} from '../pages/ExperimentView'
+import {getRandomInt} from '../utils/math'
 
 const Raman = () => {
   const {ramanFiles} = useContext(ExperimentContext)

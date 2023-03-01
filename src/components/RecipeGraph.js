@@ -1,6 +1,6 @@
-import React, {useContext, useEffect} from "react";
-import {Line} from "react-chartjs-2";
-import {ExperimentContext} from "../pages/ExperimentView";
+import React, {useContext, useEffect} from 'react'
+import {Line} from 'react-chartjs-2'
+import {ExperimentContext} from '../pages/ExperimentView'
 
 const RecipeGraph = () => {
   const {recipeGraphData, experimentDispatch} = useContext(ExperimentContext)

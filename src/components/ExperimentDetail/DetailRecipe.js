@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import {ExperimentContext} from "../../pages/ExperimentView";
-import PreparationSteps from "../../containers/PreparationSteps";
+import {ExperimentContext} from '../../pages/ExperimentView'
+import PreparationSteps from '../../containers/PreparationSteps'
 
 const Recipe = () => {
   const {experiment} = useContext(ExperimentContext)

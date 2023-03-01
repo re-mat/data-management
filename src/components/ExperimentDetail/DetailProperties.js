@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import {ExperimentContext} from "../../pages/ExperimentView";
+import React, {useContext} from 'react'
+import {ExperimentContext} from '../../pages/ExperimentView'
 
 const DetailProperties = () => {
   const {experiment} = useContext(ExperimentContext)

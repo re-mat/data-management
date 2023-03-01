@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {ExperimentContext} from "../../pages/ExperimentView";
+import {ExperimentContext} from '../../pages/ExperimentView'
 
 const DetailSubstrate = () => {
   const {experiment} = useContext(ExperimentContext)

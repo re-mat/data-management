@@ -1,0 +1,209 @@
+{
+  "experiments": {
+    "environment_conditions": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "furnaces": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "properties": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "recipes": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "substrates": [
+      {
+        "id": 1
+      },
+      {
+        "id": 2
+      },
+      {
+        "id": 3
+      },
+      {
+        "id": 4
+      },
+      {
+        "id": 5
+      },
+      {
+        "id": 6
+      },
+      {
+        "id": 7
+      },
+      {
+        "id": 8
+      },
+      {
+        "id": 9
+      },
+      {
+        "id": 10
+      }
+    ],
+    "authors": [
+      {
+        "id": 1,
+        "first_name": "Sakshi",
+        "last_name": "Tayal",
+        "institution": "test1"
+      },
+      {
+        "id": 2,
+        "first_name": "name2",
+        "last_name": "sur2",
+        "institution": "test2"
+      },
+      {
+        "id": 3,
+        "first_name": "name3",
+        "last_name": "sur3",
+        "institution": "test3"
+      }
+    ]
+  },
+  "auth-institutions": {
+    "institutions": [
+      "test1",
+      "test2",
+      "test3"
+    ]
+  },
+  "auth-signup": {
+    "email": "test@gmail.com",
+    "password": "test",
+    "firstName": "Sakshi ",
+    "lastName": "Tayal",
+    "addNewInstitution": false
+  },
+
+  "auth-signin-credentials": {
+    "email": "test@gmail.com",
+    "password": "test"
+  },
+  "auth-profile": {
+    "id": 1,
+    "first_name": "Sakshi",
+    "last_name": "Tayal",
+    "institution": "test1"
+  }
+}

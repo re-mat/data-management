@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {useContext, useEffect, useState} from 'react'
 import {Redirect} from 'react-router'
 import {host} from '../settings'
-import {GlobalContext} from "./App";
+import {GlobalContext} from './App'
 
 const Signup = () => {
   const [addNewInstitution, setAddNewInstitution] = useState(false)
@@ -21,12 +21,11 @@ const Signup = () => {
   useEffect(() => {
     const getInstitutions = async () => {
       try {
-        const response = await axios.get(host + '/auth/institutions/')
+        const response = await axios.get(host + '/auth-institutions/')
         const data = response.data
-        setInstitutionOptions(data)
+        setInstitutionOptions(data.institutions)
         setInstitution(data[0])
-      } catch (err) {
-      }
+      } catch (err) {}
     }
     getInstitutions()
   }, [])
@@ -70,7 +69,7 @@ const Signup = () => {
       addNewInstitution
     }
     try {
-      const response = await axios.post(host + '/auth/signup', data)
+      const response = await axios.post(host + '/auth-signup', data)
       if (response.status === 201) {
         setSignedUp(true)
         alert('The account has been created.')
@@ -226,7 +225,7 @@ const Signup = () => {
       <div className="mx-auto md:flex md:items-center mb-6">
         <label className="block text-black md:text-right mb-1 md:mb-0 pr-4"
                htmlFor="lastname">
-          Can't see your institution?
+          Cannot see your institution?
         </label>
         <input type='checkbox'
                onChange={e => setAddNewInstitution(e.target.checked)}

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const DetailAuthor = ({id, firstName, lastName, institution}) => {
   const displayName = <span className='md:w-1/2'>{firstName} {lastName}</span>

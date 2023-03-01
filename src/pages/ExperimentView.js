@@ -1,16 +1,16 @@
-import React, {useEffect, useReducer, useRef, useState} from "react";
-import experimentReducer, {experimentDefaultState} from "../reducers/experimentReducer";
-import {host} from "../settings";
-import axios from "axios";
-import {Redirect} from "react-router-dom";
+import React, {useEffect, useReducer, useRef, useState} from 'react'
+import experimentReducer, {experimentDefaultState} from '../reducers/experimentReducer'
+import {host} from '../settings'
+import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
-import ExperimentDetails from "../containers/ExperimentDetails";
-import Raman from "../components/Raman";
-import Sem from "../components/Sem";
-import Sidebar from "../components/Sidebar";
-import RecipeGraph from "../components/RecipeGraph";
+import ExperimentDetails from '../containers/ExperimentDetails'
+import Raman from '../components/Raman'
+import Sem from '../components/Sem'
+import Sidebar from '../components/Sidebar'
+import RecipeGraph from '../components/RecipeGraph'
 
-export const ExperimentContext = React.createContext();
+export const ExperimentContext = React.createContext()
 
 const ExperimentView = () => {
   const [experimentId, setExperimentId] = useState(null)
@@ -86,4 +86,4 @@ const ExperimentView = () => {
   )
 }
 
-export default ExperimentView;
+export default ExperimentView

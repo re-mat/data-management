@@ -1,20 +1,22 @@
-import React, {useContext, useEffect, useReducer, useState} from "react";
-import {GlobalContext} from "../pages/App";
+import React, {useContext, useReducer,useEffect, useState} from 'react'
+import {GlobalContext} from '../pages/App'
 import {
   defaultPrecision,
   materialNameOptions,
   prepNameOptions,
   shapeOptions,
+  catalystOptions,
+  carbonSourceOptions,
   host
-} from "../settings";
-import submissionReducer, {submissionDefaultState} from "../reducers/submissionReducer";
-import axios from "axios";
+} from '../settings'
+import submissionReducer, {submissionDefaultState} from '../reducers/submissionReducer'
+import axios from 'axios'
 
 const ToolSubmit = () => {
   const {userState, toolState} = useContext(GlobalContext)
   const [submissionState, submissionDispatch] = useReducer(submissionReducer, submissionDefaultState)
   const [authorIdToAdd, setAuthorIdToAdd] = useState(1)
-
+  
   useEffect(() => {
     for (const author of toolState.authors) {
       if (author.id === userState.authorId) {
@@ -22,7 +24,7 @@ const ToolSubmit = () => {
         return
       }
     }
-  })
+  }, [])
 
   const addAuthor = () => {
     for (const author of submissionState.authors) {
@@ -42,7 +44,7 @@ const ToolSubmit = () => {
   }
   const onSubmitExperiment = () => {
     if (!userState.signedIn) {
-      alert("Please log in before making a new submission.")
+      alert('Please log in before making a new submission.')
       return
     }
 
@@ -61,11 +63,11 @@ const ToolSubmit = () => {
     const stringifiedExperimentData = JSON.stringify(experimentData)
     formData.append('experimentData', stringifiedExperimentData)
     axios.post(host + '/experiments/submit', formData).then(function (response) {
-      alert(response.data);
+      alert(response.data)
     })
     .catch(function (error) {
-      alert(error);
-    });
+      alert(error)
+    })
   }
   const environmentConditionsForm =
     submissionState.useCustomEnvironmentConditions
@@ -272,10 +274,10 @@ const ToolSubmit = () => {
             <select
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
               id="form-catalyst"
-              onChange={e => {if(e.target.value==="Other");submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value});}}
+              onChange={e => {if(e.target.value==='Other');submissionDispatch({type: 'CATALYST_CHANGE', payload: e.target.value})}}
               value={submissionState.catalyst}
             >
-              {toolState.catalysts?.map((catalyst) => {
+              {catalystOptions.map((catalyst) => {
                 return <option key={catalyst}>{catalyst}</option>
               })}
               <option key="Other">Other</option>
@@ -768,7 +770,7 @@ const ToolSubmit = () => {
               onChange={e => submissionDispatch({type: 'CARBON_SOURCE_CHANGE', payload: e.target.value})}
               value={submissionState.carbonSource}
             >
-              {toolState.carbonSource.map((carbonSource) => {
+              {carbonSourceOptions.map((carbonSource) => {
                 return <option key={carbonSource}>{carbonSource}</option>
               })}
             </select>
@@ -1001,7 +1003,7 @@ const ToolSubmit = () => {
             <hr className='my-1'/>
             <div className='w-full md:flex md:items-center mb-1'>
               <span className='md:w-1/2 block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'>Name :</span>
-              {author.first_name + " " + author.last_name}
+              {author.first_name + ' ' + author.last_name}
             </div>
             <div className='w-full md:flex md:items-center mb-1'>
               <span

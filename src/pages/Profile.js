@@ -1,16 +1,16 @@
 import React, {useContext, useState, useEffect} from 'react'
-import {GlobalContext} from "./App";
-import axios from "axios";
-import {host} from "../settings";
+import {GlobalContext} from './App'
+import axios from 'axios'
+import {host} from '../settings'
 
 const Profile = () => {  
   const {userState} = useContext(GlobalContext)
-  const id = userState.authorId;
+  const id = userState.authorId
   const [author, setAuthor] = useState('')
   useEffect(() => {
     const init = async (id) => {
       try {
-        const response = await axios.get(host + '/auth/profile/'+id)
+        const response = await axios.get(host + '/auth-profile?id='+id)
         const data = response.data
         if (response.status === 200) {
           setAuthor(data)
@@ -20,7 +20,7 @@ const Profile = () => {
       }
     }
     init(id)
-  })
+  },[])
  
   return (
     <div className='md:w-1/2 flex flex-col md:items-center mx-auto border rounded my-6 py-6'>

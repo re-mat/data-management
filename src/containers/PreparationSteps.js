@@ -6,7 +6,7 @@ const PreparationSteps = ({preparationSteps}) => {
     return null
   }
   return (
-    preparationSteps.map((preparationStep, i) =>
+    preparationSteps.map((preparationStep) =>
       <PreparationStep
         key={preparationStep.id}
         id={preparationStep.id}

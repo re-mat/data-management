@@ -21,13 +21,8 @@
     "start1": "PORT=3001 craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "start-json-server": "json-server --watch db.json --port 8000"
   },
   "browserslist": {
     "production": [
@@ -44,6 +39,6 @@
   "devDependencies": {
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
   }
 }

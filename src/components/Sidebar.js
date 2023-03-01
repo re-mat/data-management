@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import {GlobalContext} from "../pages/App";
+import React, {useContext} from 'react'
+import {GlobalContext} from '../pages/App'
 
 const Sidebar = ({texts, refs}) => {
   const {userState} = useContext(GlobalContext)

@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import {Redirect} from 'react-router'
 import {GlobalContext} from './App'
-import {signInWithCredentials} from "../utils/auth";
+import {signInWithCredentials} from '../utils/auth'
 
 const Signin = () => {
   const [email, setEmail] = useState('')
@@ -12,13 +12,13 @@ const Signin = () => {
     e.preventDefault()
     try {
       const data = await signInWithCredentials(email, password)
-      window.localStorage.setItem('token', data.token)
+      // window.localStorage.setItem('token', data.token)
       const payload = {
-        authorId: data.author_id
+        authorId: data.id
       }
       g.userDispatch({type: 'SIGN_IN', payload})
     } catch (err) {
-      alert("Incorrect email or password.")
+      alert('Incorrect email or password.')
     }
   }
 

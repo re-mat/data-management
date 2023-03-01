@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
-import {ExperimentContext} from "../../pages/ExperimentView";
-import DetailAuthor from "./DetailAuthor";
+import React, {useContext} from 'react'
+import {ExperimentContext} from '../../pages/ExperimentView'
+import DetailAuthor from './DetailAuthor'
 
 const DetailAuthors = () => {
   const {experiment} = useContext(ExperimentContext)
