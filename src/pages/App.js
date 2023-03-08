@@ -25,7 +25,7 @@ const App = () => {
 	const flashSuccess = (text) => {
 		const msg =
       <div
-      	className='w-full bg-green-400 rounded text-center text-green-100 font-bold text-2xl py-2 mb-4'>
+		className='w-full bg-green-400 rounded text-center text-green-100 font-bold text-2xl py-2 mb-4'>
       	{text}
       </div>
 		setSuccessMsg(msg)
@@ -36,7 +36,7 @@ const App = () => {
 	const flashError = (text) => {
 		const msg =
       <div
-      	className='w-full bg-red-600 rounded text-center text-green-100 font-bold text-2xl py-2 mb-4'>
+		className='w-full bg-red-600 rounded text-center text-green-100 font-bold text-2xl py-2 mb-4'>
       	{text}
       </div>
 		setErrorMsg(msg)

@@ -31,7 +31,7 @@ const ExperimentView = () => {
 			experimentDispatch({type: "SET_EXPERIMENT", payload: data})
 			setIsLoading(false)
 		} catch (e) {
-			console.log(e)
+			// console.log(e)
 		}
 	}
 	useEffect(() => {

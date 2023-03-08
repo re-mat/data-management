@@ -199,21 +199,21 @@ const Signup = () => {
         <div className="md:w-full md:flex md:items-center mb-6">
         	<div className="md:w-1/3">
         		<label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        			htmlFor="lastname">
+					htmlFor="lastname">
               Institution
         		</label>
         	</div>
         	<div className="md:w-1/3 relative">
         		<select
-        			className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        			value={institution}
-        			onChange={e => {
-        				setInstitution(e.target.value)
-        			}}
-        		>
+					className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					value={institution}
+					onChange={e => {
+						setInstitution(e.target.value)
+					}}
+				>
         			{institutionOptions.map((school, i) => {
-        				return <option key={i}>{school}</option>
-        			})}
+						return <option key={i}>{school}</option>
+					})}
         		</select>
         		<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
         			<svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -235,19 +235,19 @@ const Signup = () => {
         <div className="md:w-full md:flex md:items-center mb-6">
         	<div className="md:w-1/3">
         		<label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-        			htmlFor="lastname">
+					htmlFor="lastname">
               Institution
         		</label>
         	</div>
         	<div className="md:w-1/3">
         		<input
-        			className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-        			id="new-institution" type="text" placeholder="New Institution"
-        			value={newInstitution}
-        			onChange={e => {
-        				setNewInstitution(e.target.value)
-        			}}
-        		/>
+					className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					id="new-institution" type="text" placeholder="New Institution"
+					value={newInstitution}
+					onChange={e => {
+						setNewInstitution(e.target.value)
+					}}
+				/>
         	</div>
         </div>
 			}

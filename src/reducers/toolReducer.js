@@ -17,7 +17,7 @@ const toolReducer = (state, action) => {
 	switch (action.type) {
 	case "INIT": {
 		const data = action.payload
-		console.log(data.authors)
+		// console.log(data.authors)
 		return {
 			...state,
 			environmentConditions: data.environment_conditions,

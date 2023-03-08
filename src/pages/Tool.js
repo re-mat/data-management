@@ -18,7 +18,7 @@ const Tool = () => {
 			setLoading(true)
 			try {
 				const response =  await axios.get(`${host  }/experiments`)
-				console.log(`${host  }/experiments`)
+				// console.log(`${host  }/experiments`)
 				const data = response.data
 				if (response.status === 200) {
 					toolDispatch({type: "INIT", payload: data})
