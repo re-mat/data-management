@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react"
 
 const Home = () => {
-  return (
-    <div className='container mx-auto'>
-      <h1 className='text-4xl'>
+	return (
+		<div className='container mx-auto'>
+			<h1 className='text-4xl'>
         Home
-      </h1>
-    </div>
-  )
+			</h1>
+		</div>
+	)
 }
 
 export default Home
